@@ -6,9 +6,11 @@ const myVideo = document.createElement('video') // Create a new video tag to sho
 myVideo.muted = true // Mute ourselves on our end so there is no feedback loop
 
 // Access the user's video and audio
-navigator.mediaDevices.getUserMedia({
-  video: true,
-  audio: true
+navigator.mediaDevices.getDisplayMedia({
+  video: {
+    cursor: 'always'
+  },
+  audio: false
 }).then(stream => {
   addVideoStream(myVideo, stream) // Display our video to ourselves
 
